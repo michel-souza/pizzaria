@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Pizzas solicitadas</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+   </head>
+   <body>
+      <h1>Realizar pedido</h1>
+      <a th:href="@{/pizza}">adicionar Pizza</a>
+      <br/><br/>
+      <form th:action="@{/del}" method="DELETE">
+        <label> selecione a Pizza para deletar: </label><input type="number" th:name="id"/> <input type="submit" value="apagar" />
+      </form>
+      <br/><br/>
+      <div>
+         <table border="1">
+            <tr>
+               <th></th>
+               <th>Tamanho</th>
+               <th>Sabor</th>
+               <th>valor</th>
+               <th>tempo</th>
+               <th>Adicional</th>               
+            </tr>
+            <tr th:each ="pizza,iter : ${pizzas}">
+               <td th:utext="${iter.index}">...</td>
+               <td th:utext="${pizza.tamanho}">...</td>
+               <td th:utext="${pizza.sabor}">...</td>
+               <td th:utext="${pizza.valor} + ' reais'">...</td>
+               <td th:utext="${pizza.tempo} + ' minutos'">...</td>
+               <td th:each="adicional : ${pizza.adicionais}">
+                  <p th:text="${adicional}"/>                   
+               </td>               
+             </tr>                             
+         </table>
+      </div>
+   </body>
+</html>

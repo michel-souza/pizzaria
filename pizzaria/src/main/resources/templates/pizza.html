@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Pedir Pizza</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+   </head>
+   <body>
+      <h1>Solicitar uma Pizza:</h1>
+       
+      <!--  
+         In Thymeleaf the equivalent of
+         JSP's ${pageContext.request.contextPath}/edit.html
+         would be @{/edit.html}         
+         -->
+          
+      <form th:action="@{/addPizza}" method="POST">
+		    <label for="tam">Tamanho: </label> <select
+			class="form-control" th:value="${tamanhos}" name="tamanho" id="tam">
+			<option value="0">Selecione o Tamanho</option>
+			<option th:each="size : ${tamanhos}" th:value="${size}"
+				th:text="${size.nome}"> </option>
+		    </select>          <br /> 
+		 <label for="sab">Sabor: </label>  <select
+            class="form-control" th:value="${sabores}" name="sabor" id="sab">
+            <option value="0">Selecione o Tamanho</option>
+            <option th:each="flav : ${sabores}" th:value="${flav}"
+                th:text="${flav.recheio}"> </option>
+            </select>          <br />
+         <label for="sab">Adicionais: </label>   
+         
+         <tr th:each="add : ${adicionais}">            
+            <td>
+                <input type="checkbox" th:name="extras" th:value="${add}"
+                                       th:text="${add.adicionalExtra}"  
+                                       />
+                                       
+            </td>
+         </tr>	
+		 <input type="submit" value="Pedir" />
+      </form>
+       
+      <br/>
+       
+      <!-- Check if errorMessage is not null and not empty -->
+       
+      <div th:if="${errorMessage}" th:utext="${errorMessage}" style="color:red;font-style:italic;">
+         ...
+      </div>
+       
+   </body>
+</html>

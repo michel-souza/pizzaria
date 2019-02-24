@@ -1,0 +1,10 @@
+br\com\pizzaria\model\repository\PizzaRepository.class
+br\com\pizzaria\model\Pizza_.class
+br\com\pizzaria\model\Tamanho.class
+br\com\pizzaria\model\Sabor.class
+br\com\pizzaria\model\Pizza.class
+br\com\pizzaria\PizzariaApplication.class
+br\com\pizzaria\service\PizzaService.class
+br\com\pizzaria\controllers\PizzaController.class
+br\com\pizzaria\controllers\MainController.class
+br\com\pizzaria\model\Adicional.class
